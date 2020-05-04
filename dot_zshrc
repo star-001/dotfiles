@@ -1,0 +1,68 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block, everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+#
+# Executes commands at the start of an interactive session.
+#
+# Authors:
+#   Sorin Ionescu <sorin.ionescu@gmail.com>
+#
+
+
+# Source Prezto.
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+
+prompt powerlevel10k
+
+# Environment Variable
+export PATH=$PATH:/home/fan/bin/:/home/fan/.gem/ruby/2.7.0/bin/
+export VISUAL=/usr/bin/nvim
+export GO111MODULE=on
+export GOPATH=/home/fan/bin/.gopath
+
+# Functions
+function proxy(){
+all_proxy='127.0.0.1:7890'
+    if [ $1=='on' ]
+    then
+	export all_proxy
+    else
+	unset all_proxy
+    fi
+}
+
+function pk(){
+sudo kill -9 $(ps -ef|grep $1|grep -v grep|awk '{print $2}')
+}
+
+# Customize to your needs...
+alias todo='todo.sh'
+alias vim='nvim'
+alias vi='nvim'
+alias viconf='nvim ~/.i3/config'
+alias virc='nvim ~/.zshrc'
+alias sorc='source ~/.zshrc'
+alias svim='sudo vim'
+alias netstat='ss'
+alias Syu='sudo pacman -Syu'
+alias Sua='yay -Sua'
+alias sctl=systemctl
+alias sctlu='systemctl --user'
+alias Sync='onedrive --synchronize'
+alias sctlur='systemctl --user daemon-reload'
+alias stx='st -t "Life is beautiful" -e tmux &'
+alias cat=bat
+alias lg='lazygit'
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+eval $(thefuck --alias)
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+
