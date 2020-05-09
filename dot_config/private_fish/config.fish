@@ -1,6 +1,7 @@
 alias vim='nvim'
 alias vi='nvim'
 alias Syu='sudo pacman -Syu'
+alias Sua='yay -Sua'
 alias svim='sudo nvim'
 alias less='less -R'
 
