@@ -18,6 +18,8 @@ hide_edge_borders none
 bindsym $mod+g exec google-chrome-stable
 bindsym $mod+Shift+I exec intellij-idea-ultimate-edition
 
+#bindsym $Mod1+v mode vol
+
 # change borders
 bindsym $mod+u border none
 bindsym $mod+y border pixel 1
@@ -358,7 +360,7 @@ bar {
         active_workspace   #595B5B #353836 #FDF6E3
         inactive_workspace #595B5B #222D31 #EEE8D5
         binding_mode       #16a085 #2C2C2C #F9FAF9
-        urgent_workspace   #16a085 #FDF6E3 #E5201D
+        urgent_workspace   #16a085 #fdf6e3 #e5201d
     }
 }
 
@@ -432,15 +434,14 @@ mode "$mode_gaps_outer" {
         bindsym Escape mode "default"
 }
 
-
+for_window [class="dida"] floating enable
 
 # On Startup
 #
 # Scratchpad terminal
 bindsym $mod + c exec code
 
-for_window [class="dida"] floating enable;
-for_window [class="dida"] move position center
+
 
 exec --no-startup-id st -t "Life is beautiful."  -e tmux
 for_window [instance="st" title="Life"] floating enable
